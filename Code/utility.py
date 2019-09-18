@@ -25,6 +25,9 @@ def Readin_bloc(path):
 def Readin_CSVtoDF(path):
     return pd.read_csv(path)
 
+def Readin_CSVtoMap(path):
+    return DFtoMap(Readin_CSVtoDF(path))
+
 # takes a two column dataframe and converts it to a map
 def DFtoMap(df):
     buffer1 = []

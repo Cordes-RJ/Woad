@@ -23,3 +23,7 @@ x = DFtoMap(Readin_CSVtoDF("TestData/utility_testParams.csv"))
 from utility import *
 print(EmptyInterface())
 #%%
+from utility import *
+
+x = Readin_CSVtoMap("TestData/utility_testParams.csv")
+x.Get("key1")
