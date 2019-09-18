@@ -1,0 +1,3 @@
+Key, Value
+ScanDataPath,TestData\Auc-ScanData.lua
+WhiteListPath,TestData\Parameters_TestWhiteList1.csv
