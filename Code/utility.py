@@ -35,7 +35,7 @@ def DFtoMap(df):
         buffer1.append(df[col].tolist())
     # format data for map input
     buffer2 = []
-    for i in range(len(buffer1)):
+    for i in range(len(buffer1[0])):
         buffer2.append([buffer1[0][i],buffer1[1][i]])
     return map(buffer2)
     
