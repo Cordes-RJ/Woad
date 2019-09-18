@@ -28,24 +28,24 @@ def Readin_CSVtoDF(path):
 def Readin_CSVtoMap(path):
     return DFtoMap(Readin_CSVtoDF(path))
 
-# takes a two column dataframe and converts it to a map
+# takes a two column dataframe and converts it to a Map
 def DFtoMap(df):
     buffer1 = []
     for col in df.columns:
         buffer1.append(df[col].tolist())
-    # format data for map input
+    # format data for Map input
     buffer2 = []
     for i in range(len(buffer1[0])):
         buffer2.append([buffer1[0][i],buffer1[1][i]])
-    return map(buffer2)
+    return Map(buffer2)
     
 # wanted something similar to an empty interface obj in go
 def EmptyInterface():
     return type('', (), {})()
     
-# class map is a utility class, a decorator for dictionaries
+# class Map is a utility class, a decorator for dictionaries
 # requires a list of 2dVectors
-class map:
+class Map:
     def __init__(self, KVpairs):
         self.m = dict()
         for i in KVpairs:
@@ -59,16 +59,16 @@ class map:
     # Set sets or adds a key value pair
     def Set(self, key, value):
         self.m[key] = value
-    # Del removes a key from the map
+    # Del removes a key from the Map
     def Del(self,key):
         if key in self.m.keys():
             self.m.pop(key)
-    # Get gets a key from the map
+    # Get gets a key from the Map
     def Get(self,key):
         if key in self.m.keys():
             return self.m[key]
         else:
-            print(key+" not found in map")
-    # List returns a list of keys in the map
+            print(key+" not found in Map")
+    # List returns a list of keys in the Map
     def List(self):
         return self.m.keys()
