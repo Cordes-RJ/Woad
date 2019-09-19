@@ -12,6 +12,7 @@ class Parameters:
     def __init__(self):
         self.p = util.Readin_CSVtoMap("parameters.csv")
         self.WL = util.Map([])
+        self.CreateWhiteList()
     def CreateWhiteList(self):
         df = util.Readin_CSVtoDF(self.Get("WhiteListPath"))
         for i in range(len(df["ID"])):
