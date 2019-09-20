@@ -60,10 +60,3 @@ class Parser:
         if nextDelim == -1:
             return str(item[pos:len(item)]), -1, False
         return str(item[pos:nextDelim]),nextDelim+1,True
-    
-    
-    
-    
-    
-    
-    
