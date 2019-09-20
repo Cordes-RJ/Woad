@@ -7,11 +7,16 @@ import parameters as p
 import scanParser as sps
 import auctionObj as ao
 import time
+import woadSql as wSql
+
+from datetime import datetime
 Parameters = p.Parameters()
 parser = sps.Parser(Parameters)
-parser.Parse(util.Readin_bloc("TestData/Auc-ScanData_short.txt"))
-x = parser.rawList
+x = parser.Parse(util.Readin_bloc("TestData/Auc-ScanData_2.lua"))
+print(datetime.fromtimestamp(x[0].timeStamp))
+y = ao.AuctionInputHandler(x).GetList()
+MrManager = wSql.MrSqlManager("localhost","woad001")
+MrManager.Connect()
+MrManager.InsertAuctionList(y)
+MrManager.Disconnect()
 #%%
-tst = x[0]
-m = ao.AuctionInput(tst,int(time.time()))
-y = (m.toList())

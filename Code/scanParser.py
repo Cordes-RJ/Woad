@@ -3,16 +3,19 @@
 """
 parser is used to scan the auction data file for auction entries
 """
-
+import auctionObj as ao
+import time
 class Parser:
     def __init__(self, Parameters):
         self.p = Parameters
         self.rawList = []
+        self.tStamp = int(time.time())
     #find where entries begin
     def Parse(self, content):
         self.parseRawTxt(content)
         self.cleanList()
         self.delimitList()
+        return self.ReturnRawAuctionList()
     def parseRawTxt(self,content):
         #Find Start
         content = str(content[content.find("return {") + 9:len(content)])
@@ -60,3 +63,8 @@ class Parser:
         if nextDelim == -1:
             return str(item[pos:len(item)]), -1, False
         return str(item[pos:nextDelim]),nextDelim+1,True
+    def ReturnRawAuctionList(self):
+        auctionList = []
+        for i in self.rawList:
+            auctionList.append(ao.AuctionRawInput(i,self.tStamp))
+        return auctionList
