@@ -5,6 +5,7 @@ For general utility functions used across more than one file.
 from utility import *, or import utilityWoad as u
 """
 import pandas as pd
+import time
 
 # read-in file as list
 def Readin_lines(path):
@@ -72,3 +73,6 @@ class Map:
     # List returns a list of keys in the Map
     def List(self):
         return self.m.keys()
+    
+def GetTimeStampInt():
+    return int(time.time())

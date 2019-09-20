@@ -12,7 +12,7 @@ import woadSql as wSql
 from datetime import datetime
 Parameters = p.Parameters()
 parser = sps.Parser(Parameters)
-x = parser.Parse(util.Readin_bloc("TestData/Auc-ScanData_2.lua"))
+x = parser.ParseContent(util.Readin_bloc("TestData/Auc-ScanData_2.lua"))
 print(datetime.fromtimestamp(x[0].timeStamp))
 y = ao.AuctionInputHandler(x).GetList()
 MrManager = wSql.MrSqlManager("localhost","woad001")
