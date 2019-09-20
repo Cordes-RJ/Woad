@@ -3,12 +3,9 @@
 """
 parser is used to scan the auction data file for auction entries
 """
-import parameters as p
-import time
+
 class Parser:
     def __init__(self, Parameters):
-        #
-        #
         self.p = Parameters
         self.rawList = []
     #find where entries begin
@@ -62,9 +59,7 @@ class Parser:
         nextDelim = item.find(",", pos, len(item))
         if nextDelim == -1:
             return str(item[pos:len(item)]), -1, False
-        print(item[pos:nextDelim])
         return str(item[pos:nextDelim]),nextDelim+1,True
-    
     
     
     
