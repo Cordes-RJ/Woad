@@ -30,7 +30,7 @@ class MrSqlManager:
             self.open= False
     def InsertAuction(self,auction):
         if self.open:
-            action = ("INSERT INTO auctionTest2 "
+            action = ("INSERT INTO auctions "
                       "(hashID,timeStamp,itemID,seller,count,stackSize,buyPrice,bidPrice,timeLeft) "
                       "VALUES (%(hashID)s,%(timeStamp)s,%(itemID)s,%(seller)s,%(count)s,%(stackSize)s,%(buyPrice)s,%(bidPrice)s,%(timeLeft)s)")
             self.cursor = self.db.cursor()
@@ -43,7 +43,7 @@ class MrSqlManager:
     def InsertAuctionList(self,auctionList):
         if self.open:
             auctionList = self.convertSellerstoIDs(auctionList)
-            action = ("INSERT INTO auctionTest2 "
+            action = ("INSERT INTO auctions "
                           "(hashID,timeStamp,itemID,seller,count,stackSize,buyPrice,bidPrice,timeLeft) "
                           "VALUES (%(hashID)s,%(timeStamp)s,%(itemID)s,%(seller)s,%(count)s,%(stackSize)s,%(buyPrice)s,%(bidPrice)s,%(timeLeft)s)")
             cursor = self.db.cursor()
@@ -64,7 +64,7 @@ class MrSqlManager:
                         } # add potential insertion entry to dictionary
                 auctionList[i]['seller'] = sellerID # replace name with hashid in list
             keys = nameList.keys()
-            query = "SELECT (1) FROM sellerTest WHERE hashID ="
+            query = "SELECT (1) FROM sellers WHERE hashID ="
             cursor = self.db.cursor(buffered = True)
             for key in keys:
                 querysuffix = "'"+ key +"'"+" limit 1"
@@ -80,7 +80,7 @@ class MrSqlManager:
             cursor = self.db.cursor()
             for key in keys:
                 insertionList.append(nameList[key])
-            action = ("INSERT INTO sellerTest "
+            action = ("INSERT INTO sellers "
                               "(hashID,name) "
                               "VALUES (%(hashID)s,%(name)s)")
             cursor.executemany(action,insertionList)
