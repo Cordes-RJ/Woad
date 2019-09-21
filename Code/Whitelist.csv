@@ -1,4 +1,81 @@
 ID,Name,Category,Include
-2318,Light Leather,Leather,TRUE
+2589,Linen Cloth,Cloth,TRUE
 2592,Wool Cloth,Cloth,TRUE
-4306,Silk Cloth,Cloth,FALSE
+4306,Silk Cloth,Cloth,TRUE
+4338,Mageweave Cloth,Cloth,TRUE
+14047,RuneCloth,Cloth,TRUE
+14256,Felcloth,Cloth,TRUE
+14342,Mooncloth,Cloth,TRUE
+2318,Light Leather,Leather,TRUE
+2319,Medium Leather,Leather,TRUE
+4234,Heavy Leather,Leather,TRUE
+4304,Thick Leather,Leather,TRUE
+8170,Rugged Leather,Leather,TRUE
+783,Light Hide,Leather,TRUE
+4232,Medium Hide,Leather,TRUE
+4235,Heavy Hide,Leather,TRUE
+8169,Thick Hide,Leather,TRUE
+8171,Rugged Hide,Leather,TRUE
+2447,Peacebloom,Herb,TRUE
+765,Silverleaf,Herb,TRUE
+2450,Briarthorn,Herb,TRUE
+2453,Bruiseweed,Herb,TRUE
+785,Mageroyal,Herb,TRUE
+3820,Stranglekelp,Herb,TRUE
+3357,Liferoot,Herb,TRUE
+3356,Kingsblood,Herb,TRUE
+3821,Goldthorn,Herb,TRUE
+3355,Wild Steelbloom,Herb,TRUE
+8838,Sungrass,Herb,TRUE
+3358,Khadgar's Whisker,Herb,TRUE
+8836,Arthas' Tears,Herb,TRUE
+8839,Blindweed,Herb,TRUE
+13464,Golden Sansam,Herb,TRUE
+13465,Mountain Silversage,Herb,TRUE
+8831,PurpleLotus,Herb,TRUE
+13463,Dreamfoil,Herb,TRUE
+7068,Elemental Fire,Elemental,TRUE
+7078,Essence of Fire,Elemental,TRUE
+7070,Elemental Water,Elemental,TRUE
+7069,Elemental Air,Elemental,TRUE
+7067,Elemental Earth,Elemental,TRUE
+7080,Essence of Water,Elemental,TRUE
+7076,Essence of Earth,Elemental,TRUE
+7082,Essence of Air,Elemental,TRUE
+12803,Living Essence,Elemental,TRUE
+12808,Essence of Undeath,Elemental,TRUE
+10940,Strange Dust,Enchanting,TRUE
+11083,Soul Dust,Enchanting,TRUE
+11137,Vision Dust,Enchanting,TRUE
+11176,Dream Dust,Enchanting,TRUE
+16204,Illusion Dust,Enchanting,TRUE
+10938,Lesser Magic Essence,Enchanting,TRUE
+10939,Greater Magic Essence,Enchanting,TRUE
+10998,Lesser Astral Essence,Enchanting,TRUE
+11082,Greater Astral Essence,Enchanting,TRUE
+11134,Lesser Mystic Essence,Enchanting,TRUE
+11135,Greater Mystic Essence,Enchanting,TRUE
+11174,Lesser Nether Essence,Enchanting,TRUE
+11175,Greater Nether Essence,Enchanting,TRUE
+16202,Lesser Eternal Essence,Enchanting,TRUE
+16203,Greater Eternal Essence,Enchanting,TRUE
+14343,Small Brilliant Shard,Enchanting,TRUE
+14344,Large Brilliant Shard,Enchanting,TRUE
+2840,Copper Bar,Blacksmithing|Engineering,TRUE
+2836,Coarse Stone,Blacksmithing|Engineering,TRUE
+2842,Silver Bar,Blacksmithing|Engineering,TRUE
+2841,Bronze Bar,Blacksmithing|Engineering,TRUE
+2838,Heavy Stone,Blacksmithing|Engineering,TRUE
+3577,Gold Bar,Blacksmithing|Engineering,TRUE
+3575,Iron Bar,Blacksmithing|Engineering,TRUE
+3859,Steel Bar,Blacksmithing|Engineering,TRUE
+7912,Solid Stone,Blacksmithing|Engineering,TRUE
+3860,Mithril Bar,Blacksmithing|Engineering,TRUE
+12365,Dense Stone,Blacksmithing|Engineering,TRUE
+12359,Thorium Bar,Blacksmithing|Engineering,TRUE
+7910,Star Ruby,Gem,TRUE
+7909,Aquamarine,Gem,TRUE
+1210,Shadowgem,Gem,TRUE
+5500,Iridescent Pearl,Gem,TRUE
+7971,Black Pearl,Gem,TRUE
+13926,Golden Pearl,Gem,TRUE
