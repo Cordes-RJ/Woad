@@ -15,6 +15,7 @@ parser = sps.Parser(Parameters)
 x = parser.ParseContent(util.Readin_bloc("TestData/Auc-ScanData_2.lua"))
 print(datetime.fromtimestamp(x[0].timeStamp))
 y = ao.AuctionInputHandler(x).GetList()
+
 MrManager = wSql.MrSqlManager("localhost","woad001")
 MrManager.Connect()
 MrManager.InsertAuctionList(y)
