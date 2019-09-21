@@ -4,9 +4,9 @@
 all files tested in console in the interest of efficiency
 """
 
-import pullData
+import pushData
 
-pullData.scan()
+pushData.scan()
 
 
 #%%
