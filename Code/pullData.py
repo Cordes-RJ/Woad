@@ -13,7 +13,7 @@ import auctionObj as ao
 def scan():
     AuctionList = ao.AuctionInputHandler(sps.Parser(p.Parameters()).Parse()).GetList()
     print(len(AuctionList))
-    MrManager = wSql.MrSqlManager("localhost","woad001")
+    MrManager = wSql.MrSqlManager("localhost","woad003")
     MrManager.Connect()
     MrManager.InsertAuctionList(AuctionList)
     MrManager.Disconnect()
