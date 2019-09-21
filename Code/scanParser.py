@@ -6,11 +6,12 @@ parser is used to scan the auction data file for auction entries
 import auctionObj as ao
 import time
 import utility as util
+import os
 class Parser:
     def __init__(self, Parameters):
         self.p = Parameters
         self.rawList = []
-        self.tStamp = int(time.time())
+        self.tStamp = int(os.path.getmtime(self.p.Get('ScanDataPath'))) # gets time of modification on scan file
     #find where entries begin
     def Parse(self):
         return self.ParseContent(util.Readin_bloc(self.p.Get("ScanDataPath")))

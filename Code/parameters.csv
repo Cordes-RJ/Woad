@@ -1,3 +1,4 @@
 Key, Value
 ScanDataPath,C:\Program Files (x86)\World of Warcraft\_classic_\WTF\Account\390389248#1\SavedVariables\Auc-ScanData.lua
 WhiteListPath,WhiteList.csv
+ScanDataBackupPath,C:\Program Files (x86)\World of Warcraft\_classic_\WTF\Account\390389248#1\SavedVariables\Auc-ScanData_BACKUP.lua

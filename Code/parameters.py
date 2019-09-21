@@ -5,7 +5,9 @@ import utility as util
 """
 Parameters:
 ScanDataPath
+ScanDataBackupPath
 WhiteListPath
+
 """
 
 class Parameters:
