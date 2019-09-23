@@ -1,25 +1,22 @@
 # -*- coding: utf-8 -*-
+
 """
-pullData gets the data from auc-scan
+PullData offers a handler to pull data from the DB
 """
 
-
-import utility as util
-import parameters as p
-import scanParser as sps
 import woadSql as wSql
-import auctionObj as ao
-import os
 
-def scan():
-    params = p.Parameters()
-    AuctionList = ao.AuctionInputHandler(sps.Parser(params).Parse()).GetList()
-    MrManager = wSql.MrSqlManager("localhost","woad003")
+
+def getAuctionsAtSnapshot(db, snapshot, itemID):
+    MrManager = wSql.MrSqlManager("localhost",db)
     MrManager.Connect()
-    MrManager.InsertAuctionList(AuctionList)
+    auctions = MrManager.GetAuctions(1569097981,7078)
     MrManager.Disconnect()
-    os.remove(params.Get('ScanDataBackupPath')) # remove BACKUP file
-    # set current scan data as new backup file
-    os.rename(params.Get('ScanDataPath'),params.Get('ScanDataBackupPath'))
+    return auctions
 
-    
+def getListofSnapshots(db):
+    MrManager = wSql.MrSqlManager("localhost",db)
+    MrManager.Connect()
+    auctions = MrManager.GetSnapshotList()
+    MrManager.Disconnect()
+    return auctions
