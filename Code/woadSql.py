@@ -6,6 +6,7 @@
 import dbcredentials as cdb
 import mysql.connector as db
 import hashlib as hash
+import utility as util
 
 class dbinfo:
     def __init__(self,host,DB):
@@ -64,22 +65,19 @@ class MrSqlManager:
                         } # add potential insertion entry to dictionary
                 auctionList[i]['seller'] = sellerID # replace name with hashid in list
             keys = nameList.keys()
-            query = "SELECT (1) FROM sellers WHERE hashID ="
-            cursor = self.db.cursor(buffered = True)
+            nameListDeepCopy = util.makeDeepCopyofDict(nameList)
             for key in keys:
-                querysuffix = "'"+ key +"'"+" limit 1"
-                if cursor.execute(query+querysuffix):
-                    nameList.pop(key) # if found in DB, remove the key from the list
+                if self.CheckforSeller(key):
+                    nameListDeepCopy.pop(key) # if found in DB, remove the key from the list
             # now insert the List of keys that were not found in the DB
-            cursor.close() # reset cursor
-            keys = nameList.keys() # reset Key list
+            keys = nameListDeepCopy.keys() # reset Key list
             # if no keys are unknown, return and skip the rest
             if len(keys)==0:
                 return auctionList
             insertionList = []
-            cursor = self.db.cursor()
             for key in keys:
                 insertionList.append(nameList[key])
+            cursor = self.db.cursor()
             action = ("INSERT INTO sellers "
                               "(hashID,name) "
                               "VALUES (%(hashID)s,%(name)s)")
@@ -87,7 +85,41 @@ class MrSqlManager:
             self.db.commit()
             cursor.close()
             return auctionList
-        
+    def CheckforSeller(self, item):
+        cursor = self.db.cursor()
+        cursor.execute(
+        "SELECT hashID, COUNT(*) FROM sellers WHERE hashID = %s",
+        (item,)
+    )
+        x = cursor.fetchone()
+        cursor.close()
+        if x[1]:
+            return True
+        else:
+            return False
+    def GetAuctions(self, snapshot,itemID):
+        if self.open:
+            action = "SELECT * FROM auctions WHERE timeStamp = %s AND itemID = %s"
+            cursor = self.db.cursor(buffered=True)
+            cursor.execute(action,(snapshot,itemID,))
+            record = cursor.fetchall()
+            cursor.close()
+            return record
+        return []
+    def GetSnapshotList(self):
+        if self.open:
+            cursor = self.db.cursor()
+            cursor.execute("SELECT DISTINCT timeStamp FROM auctions")
+            records = cursor.fetchall()
+            cursor.close()
+            List = []
+            for i in records:
+                List.append(i[0])
+            List.sort()
+            for i in range(len(List)):
+                List[i] = [List[i],util.intToDateTime(List[i])]
+            return List
+        return []
         
             
 

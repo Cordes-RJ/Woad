@@ -6,6 +6,7 @@ from utility import *, or import utilityWoad as u
 """
 import pandas as pd
 import time
+import datetime
 
 # read-in file as list
 def Readin_lines(path):
@@ -76,3 +77,12 @@ class Map:
     
 def GetTimeStampInt():
     return int(time.time())
+
+def makeDeepCopyofDict(olddict):
+    newdict = {}
+    for key in olddict.keys():
+        newdict[key] = olddict[key]
+    return newdict
+
+def intToDateTime(timestamp):
+    return datetime.datetime.fromtimestamp(timestamp)
