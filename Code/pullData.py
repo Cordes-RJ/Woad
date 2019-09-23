@@ -10,7 +10,7 @@ import woadSql as wSql
 def getAuctionsAtSnapshot(db, snapshot, itemID):
     MrManager = wSql.MrSqlManager("localhost",db)
     MrManager.Connect()
-    auctions = MrManager.GetAuctions(1569097981,itemID)
+    auctions = MrManager.GetAuctions(snapshot,itemID)
     MrManager.Disconnect()
     return auctions
 
