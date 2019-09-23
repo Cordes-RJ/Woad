@@ -7,6 +7,8 @@ graphDataHandler pulls in data and gets it ready for graphing
 import pandas as pd
 import pullData as pull
 import utility as util
+from scipy import stats
+import numpy as np
 
 class MrGraphDataManager:
     def __init__(self,db,snapshots,itemID):
@@ -14,8 +16,18 @@ class MrGraphDataManager:
         self.itemID = itemID
         self.snapshots = snapshots
         self.df = pd.DataFrame(columns = ["snapshot","price","bid|buyout","stacksize","count","totalquantity","timeleft"])
-    def populateAndReturnDF(self):
+    def populateAndReturnDFwithinZscore(self,withinZscore):
         self.populate()
+        #remove outliers
+        df = pd.DataFrame(self.df['price'])
+        self.df['zscore'] = (df - df.mean())/df.std()
+        self.df= self.df[self.df['zscore'] < withinZscore]
+        return self.df
+    def populateAndReturnDFwithinprice(self,above,below):
+        self.populate()
+        #remove outliers
+        self.df= self.df[self.df['price'] < below]
+        self.df= self.df[self.df['price'] > above]
         return self.df
     def populate(self):
         for i in self.snapshots:
@@ -50,24 +62,24 @@ class MrGraphDataManager:
         timeLeft |x
         """
         Item = {}
-        Item["snapshot"] = util.intToDateTime(auctionTuple[1])
-        Item["count"] = auctionTuple[4]
-        Item["stacksize"] = auctionTuple[5]
-        Item["timeleft"] = auctionTuple[8]
-        Item["totalquantity"] = auctionTuple[5]*auctionTuple[4]
+        Item["snapshot"] = str(util.intToDateTime(auctionTuple[1]))
+        Item["count"] = int(auctionTuple[4])
+        Item["stacksize"] = int(auctionTuple[5])
+        Item["timeleft"] = int(auctionTuple[8])
+        Item["totalquantity"] = int(auctionTuple[5]*auctionTuple[4])
         ObjectTuple = [{},{}]
         bid,buyout = False, False
         if auctionTuple[6] > 0:
             buyout = True
             x = util.makeDeepCopyofDict(Item)
             x['bid|buyout'] = "buyout"
-            x['price'] = auctionTuple[6]
+            x['price'] = float(auctionTuple[6])
             ObjectTuple[0]=x
         if auctionTuple[7] > 0:
             bid = True
             y = util.makeDeepCopyofDict(Item)
             y['bid|buyout'] = "bid"
-            y['price'] = auctionTuple[7]
+            y['price'] = float(auctionTuple[7])
             ObjectTuple[1]=y
         return bid,buyout,ObjectTuple
         
