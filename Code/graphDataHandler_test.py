@@ -3,7 +3,7 @@
 import graphDataHandler as gdh
 
 snapshots = [1569097981, 1569106184, 1569242546, 1569247080]
-MrManager = gdh.MrGraphManager('woad003', snapshots,2318)
+MrManager = gdh.MrGraphDataManager('woad003', snapshots,2318)
 auctions2 = MrManager.populateAndReturnDF()
 #%%
 

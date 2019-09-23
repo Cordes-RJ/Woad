@@ -8,7 +8,7 @@ import pandas as pd
 import pullData as pull
 import utility as util
 
-class MrGraphManager:
+class MrGraphDataManager:
     def __init__(self,db,snapshots,itemID):
         self.db = db
         self.itemID = itemID
